@@ -10,13 +10,13 @@ type Data = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data[]>
+  res: NextApiResponse
 ) {
   const result = await scrap();
   res.status(200).json(result);
 }
 
-const scrap = async (): Promise<Data[]> => {
+const scrap = async () => {
   const browser = await pupeteer.launch();
   const page = await browser.newPage();
   await page.goto("https://www.playlostark.com/en-gb/support/server-status");
@@ -46,10 +46,6 @@ const scrap = async (): Promise<Data[]> => {
     }));
     return listNames;
   });
-
-  // console.log(names);
-
-  // await page.screenshot({ path: "example.png", fullPage: true });
 
   await browser.close();
 
