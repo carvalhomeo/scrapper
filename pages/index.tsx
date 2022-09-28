@@ -59,7 +59,7 @@ const usePlaySounds = (data: Data[] | undefined) => {
 
 const Home: NextPage = () => {
   const { isLoading, data } = useQuery(["names"], fetchData, {
-    refetchInterval: 5000,
+    refetchInterval: 6000,
   });
 
   usePlaySounds(data);
