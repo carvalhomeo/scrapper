@@ -26,7 +26,7 @@ const usePlaySounds = (data: Data[] | undefined) => {
   const server = process.env.NEXT_PUBLIC_SERVER;
 
   useEffect(() => {
-    if (data?.find((name) => name.name === server)) {
+    if (data?.find((name) => name.name === server && name.status === "good")) {
       playTada();
       playCrowd();
 
@@ -45,7 +45,16 @@ const usePlaySounds = (data: Data[] | undefined) => {
       stopMan();
       stopTada();
     };
-  });
+  }, [
+    data,
+    playCrowd,
+    playMan,
+    playTada,
+    server,
+    stopCrowd,
+    stopMan,
+    stopTada,
+  ]);
 };
 
 const Home: NextPage = () => {
@@ -63,7 +72,10 @@ const Home: NextPage = () => {
         justifyContent: "center",
       }}
     >
-      {data?.find((name) => name.name === process.env.NEXT_PUBLIC_SERVER) ? (
+      {data?.find(
+        (name) =>
+          name.name === process.env.NEXT_PUBLIC_SERVER && name.status === "good"
+      ) ? (
         <h1 style={{ fontWeight: "800", fontSize: "300px", color: "green" }}>
           ONLINE
         </h1>
