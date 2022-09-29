@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import chromium from "chrome-aws-lambda";
+import pup from "puppeteer-core";
 
 async function getBrowserInstance() {
   const executablePath = await chromium.executablePath;
