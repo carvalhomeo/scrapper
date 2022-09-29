@@ -22,12 +22,10 @@ const fetchData = async () => {
 const usePlaySounds = (data: Data[] | undefined) => {
   const [playCrowd, { stop: stopCrowd }] = useSound("/crowd.mp3");
   const [playMan, { stop: stopMan }] = useSound("/man.mp3");
-  const [playTada, { stop: stopTada }] = useSound("/tadaa.mp3");
   const server = process.env.NEXT_PUBLIC_SERVER;
 
   useEffect(() => {
     if (data?.find((name) => name.name === server && name.status === "good")) {
-      playTada();
       playCrowd();
 
       setTimeout(() => {
@@ -43,18 +41,8 @@ const usePlaySounds = (data: Data[] | undefined) => {
     return () => {
       stopCrowd();
       stopMan();
-      stopTada();
     };
-  }, [
-    data,
-    playCrowd,
-    playMan,
-    playTada,
-    server,
-    stopCrowd,
-    stopMan,
-    stopTada,
-  ]);
+  }, [data, playCrowd, playMan, server, stopCrowd, stopMan]);
 };
 
 const Home: NextPage = () => {
