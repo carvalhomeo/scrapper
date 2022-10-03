@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^4.7.2",
+    "@types/jest": "^29.1.1",
     "axios": "^0.27.2",
     "chrome-aws-lambda": "^10.1.0",
+    "jest": "^29.1.2",
     "next": "12.3.1",
     "puppeteer-core": "^18.0.5",
     "react": "18.2.0",
