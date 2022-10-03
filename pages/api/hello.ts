@@ -13,8 +13,8 @@ async function getBrowserInstance() {
       ignoreHTTPSErrors: true,
     });
   } else {
-    require("puppeteer-core");
-    return chromium.puppeteer.launch({
+    const puppeteer = require("puppeteer-core");
+    return puppeteer.launch({
       args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
       defaultViewport: chromium.defaultViewport,
       executablePath: executablePath,
